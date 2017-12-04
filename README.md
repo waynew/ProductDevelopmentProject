@@ -42,7 +42,7 @@ Fields should use appropriate widgets based on their type. `text` fields should 
 
 Deliverables will be...
 
-1. A modern JavaScript app. **Bonus points** if you use ES6 and a modern JavaScript framework. **Mega bonus points** if you use Vue.js specifically. This position
+1. A modern JavaScript app. **Bonus points** if you use ES6 and a modern JavaScript framework. **Mega bonus points** if you use Vue.js specifically.
 
 ## Questions
 
