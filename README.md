@@ -53,4 +53,4 @@ For questions, please contact phil@britecore.com.
 When you're done with the above project, please submit your GitHub repo to phil@britecore.com along with a link to a live hosted instance.
 
 1. **Bonus points** if you also orchestrate the launch environment in AWS using CloudFormation.
-2. **Mega bonus points** if you the app in [AWS Lambda](https://aws.amazon.com/lambda/) using [Zappa](https://github.com/Miserlou/Zappa).
+2. **Mega bonus points** if you host the app in [AWS Lambda](https://aws.amazon.com/lambda/) using [Zappa](https://github.com/Miserlou/Zappa).
