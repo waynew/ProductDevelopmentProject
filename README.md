@@ -46,12 +46,11 @@ Deliverables will be...
 
 ## Questions
 
-For questions, please contact grant@britecore.com.
+For questions, please contact phil@britecore.com.
 
 ## Finished?
 
-When you're done with the above project, please submit your GitHub repo to grant@britecore.com. Also submit...
+When you're done with the above project, please submit your GitHub repo to phil@britecore.com along with a link to a live hosted instance.
 
-1. A video of you running the code and loading the page in a browser (plus some screenshots).
-2. **Bonus points** if you host the application and send us the URL so we can play with it.
-3. **Mega bonus points** if you host the backend on [AWS Lambda](https://aws.amazon.com/lambda/) using [Zappa](https://github.com/Miserlou/Zappa).
+1. **Bonus points** if you also orchestrate the launch environment in AWS using CloudFormation.
+2. **Mega bonus points** if you the app in [AWS Lambda](https://aws.amazon.com/lambda/) using [Zappa](https://github.com/Miserlou/Zappa).
