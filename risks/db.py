@@ -17,6 +17,7 @@ class RiskEnumValue(db.Model):
 class RiskField(db.Model):
     type_name = db.Column(db.Text, db.ForeignKey(RiskFieldType.name), primary_key=True)
     risk_type_name = db.Column(db.Text, db.ForeignKey('risk_type.name'), primary_key=True)
+    label = db.Column(db.Text)
     type = db.relationship('RiskFieldType')
 
 

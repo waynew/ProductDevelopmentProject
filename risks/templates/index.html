@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="app">
+      <form v-for="risk_type in risk_types">
+        <h2>{{ risk_type.type }}</h2>
+        <thing v-for="field in risk_type.fields"
+               :name="field.name"
+               :label="field.label"
+               :type="field.type"
+               :options="field.options"
+               ></thing>
+      </form>
+    </div>
+    <script>
+    Vue.component('thing', {
+      props: ['name', 'label', 'type', 'options'],
+      template: '<label v-bind:for="name">{{ label }}<select v-if="type === \'enum\'"><option v-for="option in options">{{ option }}</option></select><input v-else v-bind:type="type" v-bind:name="name"/></label>',
+    });
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        risk_types: [],
+      },
+      created: function(){
+        var _this = this;
+        $.getJSON('/api/v1/risktypes', function(json){
+          _this.risk_types = json;
+        });
+      },
+    });
+    </script>
+  </body>
+</html>

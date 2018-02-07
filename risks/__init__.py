@@ -1,6 +1,6 @@
 import json
 from collections import OrderedDict
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from flask.json import JSONEncoder
 from . import db
 
@@ -11,7 +11,11 @@ class CustomJSONEncoder(JSONEncoder):
     def default(self, obj):
         try:
             if isinstance(obj, db.RiskField):
-                field = OrderedDict(name=obj.type.name, type=obj.type.type)
+                field = OrderedDict(
+                    name=obj.type.name,
+                    label=obj.label,
+                    type=obj.type.type,
+                )
                 if obj.type.type == 'enum':
                     field['options'] = [json.loads(v.value) for v in obj.type.values]
                 return field
@@ -31,6 +35,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JSON_SORT_KEYS'] = False
 app.json_encoder = CustomJSONEncoder
 db.db.init_app(app)
+
+
+@app.route('/')
+def main():
+    with open('risks/templates/index.html') as f:
+        return f.read()
 
 
 @app.route('/api/v1/risktype/<type>')
@@ -107,20 +117,24 @@ def run():
             type='text',
         ))
         db.db.session.add(db.RiskFieldType(
+            name='date',
+            type='date',
+        ))
+        db.db.session.add(db.RiskFieldType(
             name='age',
-            type='numeric',
+            type='number',
         ))
         db.db.session.add(db.RiskFieldType(
             name='probability',
-            type='numeric',
+            type='number',
         ))
         db.db.session.add(db.RiskFieldType(
             name='insured value',
-            type='numeric',
+            type='number',
         ))
         db.db.session.add(db.RiskFieldType(
             name='reward value',
-            type='numeric',
+            type='number',
         ))
         rt = db.RiskType(
             name='property',
@@ -130,12 +144,15 @@ def run():
         rt.fields.extend([
             db.RiskField(
                 type_name='first_name',
+                label="First Name",
             ),
             db.RiskField(
                 type_name='address',
+                label="Address",
             ),
             db.RiskField(
                 type_name='insured value',
+                label="Insured Value",
             ),
         ])
         rt = db.RiskType(
@@ -145,18 +162,27 @@ def run():
         rt.fields.extend([
             db.RiskField(
                 type_name='salutation',
+                label="Salutation",
             ),
             db.RiskField(
                 type_name='points',
+                label="Points",
             ),
             db.RiskField(
                 type_name='event_name',
+                label="Event Name",
+            ),
+            db.RiskField(
+                type_name='date',
+                label="Event Date",
             ),
             db.RiskField(
                 type_name='probability',
+                label="Probability",
             ),
             db.RiskField(
                 type_name='reward value',
+                label="Reward Value",
             ),
         ])
         db.db.session.add(rt)
