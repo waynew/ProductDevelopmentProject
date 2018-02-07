@@ -20,7 +20,7 @@ class CustomJSONEncoder(JSONEncoder):
                     field['options'] = [json.loads(v.value) for v in obj.type.values]
                 return field
             elif isinstance(obj, db.RiskType):
-                type = OrderedDict(type=obj.name, fields=obj.fields)
+                type = OrderedDict(type=obj.name, label=obj.label, fields=obj.fields)
                 return type
         except TypeError:
             pass
@@ -138,6 +138,7 @@ def run():
         ))
         rt = db.RiskType(
             name='property',
+            label='Property',
             description='Real Estate',
         )
         db.db.session.add(rt)
@@ -156,7 +157,8 @@ def run():
             ),
         ])
         rt = db.RiskType(
-            name='Hole in One',
+            name='hole-in-one',
+            label='Hole in One',
             description='Hole-in-One contest',
         )
         rt.fields.extend([

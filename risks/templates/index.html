@@ -7,7 +7,7 @@
   <body>
     <div id="app">
       <form v-for="risk_type in risk_types">
-        <h2>{{ risk_type.type }}</h2>
+        <h2>{{ risk_type.label }}</h2>
         <thing v-for="field in risk_type.fields"
                :name="field.name"
                :label="field.label"
@@ -19,7 +19,7 @@
     <script>
     Vue.component('thing', {
       props: ['name', 'label', 'type', 'options'],
-      template: '<label v-bind:for="name">{{ label }}<select v-if="type === \'enum\'"><option v-for="option in options">{{ option }}</option></select><input v-else v-bind:type="type" v-bind:name="name"/></label>',
+      template: '<div><label v-bind:for="name">{{ label }}</label><select v-if="type === \'enum\'"><option v-for="option in options">{{ option }}</option></select><input v-else v-bind:type="type" v-bind:name="name"/></div>',
     });
 
     var app = new Vue({

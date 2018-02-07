@@ -23,6 +23,7 @@ class RiskField(db.Model):
 
 class RiskType(db.Model):
     name = db.Column(db.Text, primary_key=True)
+    label = db.Column(db.Text)
     description = db.Column(db.Text)
     fields = db.relationship('RiskField', backref='risk_type')
 
