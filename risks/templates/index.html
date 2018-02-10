@@ -3,8 +3,21 @@
   <head>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <style>
+    label {
+      clear: both;
+      display: block;
+    }
+    #app h2 {
+      border-top: thin #ddd dotted;
+    }
+    </style>
   </head>
   <body>
+    <header>
+      <h1>Dynamic Risk Types</h1>
+      <h2>by Wayne Werner</h2>
+    </header>
     <div id="app">
       <form v-for="risk_type in risk_types">
         <h2>{{ risk_type.label }}</h2>

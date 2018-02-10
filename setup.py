@@ -21,7 +21,6 @@ setup(
         'Environment :: Console',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
-        # TODO: Add other trove classifiers -W. Werner, 2017-10-04
         'Topic :: Office/Business',
         'Topic :: Utilities',
     ],
