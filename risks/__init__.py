@@ -49,4 +49,4 @@ def run():
     if '--add-samples' in sys.argv:
         db.add_samples(app)
 
-    app.run(debug=True, host='0.0.0.0', port=5555)
+    app.run(host='127.0.0.1', port=5432)

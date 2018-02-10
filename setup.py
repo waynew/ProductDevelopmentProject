@@ -16,6 +16,7 @@ setup(
             'risks=risks:run',
         ],
     },
+    install_requires=install_requires,
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Console',
